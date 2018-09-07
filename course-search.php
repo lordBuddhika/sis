@@ -1,4 +1,25 @@
 <?php include_once 'staff-header.php'; ?>
+<?php
+	$db = new mysqli('localhost' , 'root' , '' , 'itpprojectdb');
+
+		if($db->connect_error)
+			{
+				die("Falie to connect Databass  :" . $db->connect_error);
+			}
+
+			if(isset($_POST["delete"]))
+				{
+					$courseid  = $_POST["courseid"];
+					$sql = "DELETE from courses WHERE cid ='$courseid'";
+						if(!$db->query($sql))
+							{
+								echo "Error updating  record  " . $db->error;
+							}
+					}
+ ?>
+
+
+
 				<div class="col-md-10">
 					<nav>
 						<div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -11,17 +32,18 @@
 					</nav>
 					<div class="tab-content">
 						<div class="tab-pane mt-4 show active">
-							<form method="post" action="staff-search.php">
+							<form method="post" action="course-search.php">
 								<div class="row">
 									<div class="col-md-12">
 										<div class="input-group mb-3">
-											<input type="text" class="form-control" placeholder="Course name, id, grade" aria-label="Recipient's username" aria-describedby="basic-addon2">
+											<input type="text" class="form-control" name = "search" placeholder="Course name, id, grade">
 											<div class="input-group-append">
 												<button class="btn btn-dark" type="button">Search</button>
 											</div>
 										</div>
 									</div>
 								</div>
+							</form>
 								<div class="row">
 									<div class="col-md-12">
 										<table class="table table-bordered">
@@ -30,56 +52,69 @@
 													<th scope="col">Course ID</th>
 													<th scope="col">Name</th>
 													<th scope="col">Grade</th>
+													<th scope="col">Day </th>
+													<th scope="col">Strat-Time</th>
+													<th scope="col">End-Time</th>
 													<th scope="col">Hall</th>
 													<th scope="col">Fee</th>
 													<th scope="col"></th>
 												</tr>
 											</thead>
-											<tbody>
+
+												<?php
+														if(isset($_POST['search']))
+															{
+																$searchq = $_POST['search'];
+																$sql  = "select * from courses WHERE
+																												name LIKE '%$searchq%' OR
+																												cid LIKE '%$searchq%' OR ";	}
+															else {
+																		$sql = "SELECT * FROM courses";
+															}
+
+												$result = $db->query($sql);
+
+																		while($row = $result->fetch_assoc()){
+																	//		$cid = $row['course_id'];
+																		//	$sql_c = "select * from courses where cid='$cid'";
+																	//		$result_c=$db->query($sql_c);
+																	//		$row_c = $result_c->fetch_assoc();
+
+																	?>
+
+												<tbody>
+
 												<tr>
-													<th scope="row">MAT207</th>
-													<td>Mathematics</td>
-													<td>11</td>
-													<td>H0201</td>
-													<td>1200</td>
+													<th scope="row"><?php echo $row['cid']; ?></th>
+															<td><?php echo $row['name']; ?></td>
+																<td><?php echo $row['grade']; ?></td>
+																<td><?php echo $row['day']; ?></td>
+																<td><?php echo $row['time_start']; ?></td>
+																<td><?php echo $row['time_end']; ?></td>
+																<td><?php echo $row['hall_no']; ?></td>
+																<td><?php echo $row['fee']; ?></td>
 													<td>
-														<div class="btn-group" role="group" aria-label="Basic example">
-															<button type="button" class="btn btn-dark">Update</button>
-															<button type="button" class="btn btn-danger">Delete</button>
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<th scope="row">SCI192</th>
-													<td>Science</td>
-													<td>11</td>
-													<td>H0204</td>
-													<td>1200</td>
-													<td>
-														<div class="btn-group" role="group" aria-label="Basic example">
-															<button type="button" class="btn btn-dark">Update</button>
-															<button type="button" class="btn btn-danger">Delete</button>
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<th scope="row">ENG027</th>
-													<td>English</td>
-													<td>11</td>
-													<td>H0206</td>
-													<td>1200</td>
-													<td>
-														<div class="btn-group" role="group" aria-label="Basic example">
-															<button type="button" class="btn btn-dark">Update</button>
-															<button type="button" class="btn btn-danger">Delete</button>
-														</div>
+														<div class="btn-group" role="group" >
+
+															<form action="course-update.php" method= "post">
+																	<input type="hidden" value="<?php echo $row['cid']; ?>" name="$courseid">
+																	<input type="submit" value=" Update " class="btn btn-dark" name="update">
+															</form>
+
+															<form  action="course-search.php" method="post">
+																<input type="hidden" value="<?php echo $row['cid'];  ?>" name="$courseid">
+																<input type="submit" value="DELETE" class="btn btn-danger" name="delete">
+															</form>
+															</div>
 													</td>
 												</tr>
 											</tbody>
+										<?php }
+										 ?>
+
 										</table>
 									</div>
 								</div>
-							</form>
 						</div>
 					</div>
 				</div>
