@@ -49,6 +49,9 @@
 			<?php }	?>
 			<div class="row">
 				<div class="col-md-6 offset-md-3 mt-5">
+					<div style="text-align:center">
+						<img src="assets/images/sis-logo-md.png" alt="" style="width: 150px;margin: 0px auto 30px;">
+					</div>
 					<div class="card">
 						<h5 class="card-header">Login</h5>
 						<div class="card-body">

@@ -17,6 +17,7 @@
 	<title>Success International School | Dashboard</title>
 	<link rel="stylesheet" href="assets/css/bootstrap.css">
 	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/Finance_Style.css">
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
@@ -27,7 +28,7 @@
 			<div class="collapse navbar-collapse" id="navbarText">
 				<span class="navbar-nav mr-auto"></span>
 				<ul class="navbar-nav">
-					<li class="nav-item <?php $active_state = (is_on_page("profile")) ? 'active' : '' ; echo $active_state; ?>"><a class="nav-link" href="profile.php">Profile</a></li>
+					<li class="nav-item"><a href="profile.php" class="badge badge-pill badge-secondary" style="margin-top: 11px;margin-right: 12px;<?php echo (is_on_page("profile")) ? 'background-color: #d6d8db;' : '' ; ?>color: #343a40;"><?php echo $session->get_session('fname') . ' ' . $session->get_session('lname'); ?></a></li>
 					<li class="nav-item <?php $active_state = (is_on_page("dashboard")) ? 'active' : '' ; echo $active_state; ?>"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
 					<li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
 				</ul>
@@ -59,7 +60,7 @@
 							<a href="courses.php" class="list-group-item list-group-item-action list-group-item-secondary <?php $active_state = (is_on_page("courses")) ? 'active' : '' ; echo $active_state; ?>">Courses</a>
 						<?php } ?>
 						<?php if($session->get_session('permission_finance')) { ?>
-							<a href="finance.php" class="list-group-item list-group-item-action list-group-item-secondary <?php $active_state = (is_on_page("finance")) ? 'active' : '' ; echo $active_state; ?>">Finance</a>
+							<a href="Finance_Dashboard.php" class="list-group-item list-group-item-action list-group-item-secondary <?php $active_state = (is_on_page("finance")) ? 'active' : '' ; echo $active_state; ?>">Finance</a>
 						<?php } ?>
 						<?php if($session->get_session('permission_library')) { ?>
 							<a href="library.php" class="list-group-item list-group-item-action list-group-item-secondary <?php $active_state = (is_on_page("library")) ? 'active' : '' ; echo $active_state; ?>">Library</a>
@@ -70,6 +71,5 @@
 						<?php if(true /* $session->get_session('permission_employees') */ ) { ?>
 							<a href="profile.php" class="list-group-item list-group-item-action list-group-item-secondary <?php $active_state = (is_on_page("profile")) ? 'active' : '' ; echo $active_state; ?>">Profile</a>
 						<?php } ?>
-
 					</div>
 				</div>

@@ -28,7 +28,7 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="input-group mb-3">
-											<input name="s" type="text" class="form-control" placeholder="Exam, course, grade" aria-label="Recipient's username" aria-describedby="basic-addon2">
+											<input name="s" type="text" class="form-control" placeholder="Exam name" aria-label="Recipient's username" aria-describedby="basic-addon2" pattern="[A-Za-z0-9 ]{1,50}" required>
 											<div class="input-group-append">
 												<button class="btn btn-dark" type="button">Search</button>
 											</div>
@@ -56,6 +56,7 @@
                                                 $keyword = $_POST['s'];
                                                 $sql = "select * from exams
                                                         WHERE
+                                                            id LIKE '%$keyword%' OR
                                                             name LIKE '%$keyword%' OR
                                                             course_id LIKE '%$keyword%'";
                                             } else {

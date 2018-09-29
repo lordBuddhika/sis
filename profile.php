@@ -40,9 +40,22 @@
 										<div class="form-row">
 											<div class="col-md-6">
                                                 <select size="5" class="form-control" multiple disabled>
-                                                    <?php foreach($user['departments'] as $department) { ?>
-                                                    <option value="<?php echo $department['did']; ?>" <?php echo ($department['status']) ? 'selected' : '' ; ?>><?php echo $department['name']; ?></option>
-                                                    <?php } ?>
+													<?php
+                                                        foreach ($user['departments'] as $department) {
+                                                            if ($department['status']) {
+                                                                $selected_did = $department['did']; ?>
+																<option value="<?php echo $department['did']; ?>" <?php echo ($department['status']) ? 'selected' : '' ; ?>><?php echo $department['name']; ?></option>
+                                                            <?php }
+                                                        }
+
+                                                        $dup_depts = array();
+                                                        foreach($user['departments'] as $department) {
+                                                            if (!is_numeric(array_search($department['name'], $dup_depts)) && ($selected_did != $department['did'])) {
+                                                                array_push($dup_depts, $department['name']); ?>
+															    <option value="<?php echo $department['did']; ?>" <?php echo ($department['status']) ? 'selected' : '' ; ?>><?php echo $department['name']; ?></option>
+                                                            <?php }
+                                                        }
+                                                    ?>
                                                 </select>
 											</div>
 										</div>

@@ -23,13 +23,14 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="input-group mb-3">
-											<input name="s" type="text" class="form-control" placeholder="Exam name, id, grade" aria-label="Recipient's username" aria-describedby="basic-addon2">
+											<input name="s" type="text" class="form-control" placeholder="Exam name" aria-label="Recipient's username" aria-describedby="basic-addon2" pattern="[A-Za-z0-9 ]{1,50}" required>
 											<div class="input-group-append">
-												<button class="btn btn-dark" type="button">Search</button>
+												<button class="btn btn-dark" type="submit">Search</button>
 											</div>
 										</div>
 									</div>
 								</div>
+							</form>
 								<div class="row">
 									<div class="col-md-12">
 										<table class="table table-bordered">
@@ -85,9 +86,10 @@
 														<span class="hr <?php echo ( (substr($row['time_start'], 0, 2) <= 18) && substr($row['time_end'], 0, 2) >= 18) ? 'hr-act': ''; ?> <?php echo ($time == 18) ? 'hr-curr' : '' ; ?>">18</span>
 													</td>
 													<td>
-														<div class="btn-group" role="group" aria-label="Basic example">
-															<button type="button" class="btn btn-dark">Reschedule</button>
-														</div>
+														<form action="exam-update.php" method="post">
+															<input type="hidden" value="<?php echo $row['id']; ?>" name="examid">
+															<input type="submit" value="Reschedule" class="btn btn-dark" name="update">
+														</form>
 													</td>
 												</tr>
 											</tbody>
@@ -98,7 +100,6 @@
 										</table>
 									</div>
 								</div>
-							</form>
 						</div>
 					</div>
 				</div>

@@ -42,10 +42,10 @@
 									<div class="col-sm-10">
 										<div class="form-row">
 											<div class="col-md-3">
-												<input type="text" class="form-control" name="fname" placeholder="First name" maxlength="50" pattern="[A-Za-z.]{3,49}" required>
+												<input type="text" class="form-control" name="fname" id="fname" placeholder="First name" maxlength="50" pattern="[A-Za-z.]{3,49}" required>
 											</div>
 											<div class="col-md-3">
-												<input type="text" class="form-control" name="lname" placeholder="Last name" maxlength="50" pattern="[A-Za-z.]{3,49}" required>
+												<input type="text" class="form-control" name="lname" id="lname" placeholder="Last name" maxlength="50" pattern="[A-Za-z.]{3,49}" required>
 											</div>
 										</div>
 									</div>
@@ -55,13 +55,13 @@
 									<div class="col-sm-10">
 										<div class="form-row">
 											<div class="col-md-2">
-												<input type="number" class="form-control" name="doby" placeholder="Year" min="1900" max="2100" required>
+												<input type="number" class="form-control" name="doby" id="doby" placeholder="Year" min="1900" max="2100" required>
 											</div>
 											<div class="col-md-2">
-												<input type="number" class="form-control" name="dobm" placeholder="Month" min="1" max="12" required>
+												<input type="number" class="form-control" name="dobm" id="dobm" placeholder="Month" min="1" max="12" required>
 											</div>
 											<div class="col-md-2">
-												<input type="number" class="form-control" name="dobd" placeholder="Date" min="1" max="31" required>
+												<input type="number" class="form-control" name="dobd" id="dobd" placeholder="Date" min="1" max="31" required>
 											</div>
 										</div>
 									</div>
@@ -71,7 +71,7 @@
 									<div class="col-sm-10">
 										<div class="form-row">
 											<div class="col-md-6">
-												<input type="number" class="form-control" name="salary" placeholder="LKR" min="10000" max="1000000" required>
+												<input type="number" class="form-control" name="salary" id="salary" placeholder="LKR" min="10000" max="1000000" required>
 											</div>
 										</div>
 									</div>
@@ -81,7 +81,7 @@
 									<div class="col-sm-10">
 										<div class="form-row">
 											<div class="col-md-6">
-												<input type="text" class="form-control" name="nic" placeholder="Ex: 123456789V" maxlength="10" required>
+												<input type="text" class="form-control" name="nic" id="nic" placeholder="Ex: 123456789V" maxlength="10" required>
 											</div>
 										</div>
 									</div>
@@ -91,7 +91,7 @@
 									<div class="col-sm-10">
 										<div class="form-row">
 											<div class="col-md-6">
-												<input type="text" class="form-control" name="mobile_no" placeholder="Mobile" maxlength="10" required>
+												<input type="text" class="form-control" name="mobile_no" id="mobile_no" placeholder="Mobile" maxlength="10" required>
 											</div>
 										</div>
 									</div>
@@ -101,7 +101,7 @@
 									<div class="col-sm-10">
 										<div class="form-row">
 											<div class="col-md-6">
-												<textarea type="text" class="form-control" name="address" placeholder="Address" rows="3" maxlength="512" required></textarea>
+												<textarea type="text" class="form-control" name="address" id="address" placeholder="Address" rows="3" maxlength="512" required></textarea>
 											</div>
 										</div>
 									</div>
@@ -111,7 +111,7 @@
 									<div class="col-sm-10">
 										<div class="form-row">
 											<div class="col-md-6">
-												<input type="email" class="form-control" name="email" placeholder="Email" required>
+												<input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
 											</div>
 										</div>
 									</div>
@@ -128,8 +128,25 @@
 									</div>
 								</fieldset>
 								<div class="form-group row">
-									<div class="col-sm-10">
+									<div class="col-sm-6">
 										<button type="submit" class="btn btn-dark">Add Employee</button>
+									</div>
+									<div class="col-sm-4">
+										<button name="add" type="button" class="btn btn-primary" onclick="autofill()">Demo</button>
+										<script>
+										function autofill() {
+											document.getElementById('fname').value = "John";
+											document.getElementById('lname').value = "Doe";
+											document.getElementById('doby').value = 1993;
+											document.getElementById('dobm').value = 04;
+											document.getElementById('dobd').value = 05;
+											document.getElementById('salary').value = 85000;
+											document.getElementById('nic').value = "942565480V";
+											document.getElementById('mobile_no').value = "0782168254";
+											document.getElementById('address').value = "No 1337,\nMain Street,\nColombo 12.";
+											document.getElementById('email').value = "johndoe@outlook.com";
+										}
+										</script>
 									</div>
 								</div>
 							</form>

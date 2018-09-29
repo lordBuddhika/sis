@@ -9,6 +9,7 @@
 
         if(isset($_POST['addCourse']))
         {
+            $cid = substr(number_format(time() * rand(),0,'',''),0,4);
             $name = $_POST['name'];
             $grade = $_POST['grade'];
             $day = $_POST['day'];
@@ -17,7 +18,7 @@
             $hall = $_POST['hall'];
             $fee = $_POST['fee'];
 
-                $sql_in = "INSERT INTO courses (name,grade,day,time_start,time_end,hall_no,fee) VALUES ('$name','$grade','$day','$time','$etime','$hall','$fee')";
+                $sql_in = "INSERT INTO courses (cid,name,grade,day,time_start,time_end,hall_no,fee) VALUES ('$cid','$name','$grade','$day','$time','$etime','$hall','$fee')";
                     if(!$db->query($sql_in)){
                         echo "Error Inserting data  : " . $db->error;
                       }
@@ -47,7 +48,7 @@
                         <div class="col-sm-10">
                             <div class="form-row">
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="name" pattern="[A-Z.]{3,30}" placeholder="Course Name" required>
+                                    <input type="text" class="form-control" name="name" pattern="[A-Z.]{3,30}" placeholder="Ex: ENGLISH" required>
                                 </div>
                             </div>
                         </div>
@@ -122,7 +123,7 @@
                                 <div class="col-md-6">
                                     <select name="hall" class="form-control">
                                         <option value="01">H01</option>
-                                        <option value="02">H03</option>
+                                        <option value="02">H02</option>
                                         <option value="03">H03</option>
                                         <option value="04">H04</option>
                                         <option value="05">H05</option>
