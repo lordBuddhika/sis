@@ -12,6 +12,8 @@
 *	Database 	- Database connection
 */
 
+require_once 'database_credentials.php';
+
 define('USERID', 'userid');
 define('FNAME', 'fname');
 define('LNAME', 'lname');
@@ -692,10 +694,10 @@ class AuthHandler extends Database {
 class Database {
 
 	public static $DB_CONN;
-	private $DB_USER = 'root';
-	private $DB_PASS = '';
-	private $DB_NAME = 'itpprojectdb';
-	private $DB_HOST = 'localhost';
+	private $DB_USER = DB_USER;
+	private $DB_PASS = DB_PASS;
+	private $DB_NAME = DB_NAME;
+	private $DB_HOST = DB_HOST;
 	private $DB_PORT = '3306';
 	private $DB_CONN_STATUS = false;
 

@@ -1,7 +1,7 @@
-<?php include_once 'staff-header.php'; ?>
-<?php
-	$db = new mysqli('localhost' , 'root' , '' , 'itpprojectdb');
+<?php include_once 'staff-header.php';
+    require_once 'database_credentials.php';
 
+    $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 		if($db->connect_error)
 			{
 				die("Falie to connect Databass  :" . $db->connect_error);

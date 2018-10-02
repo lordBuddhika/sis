@@ -1,11 +1,8 @@
 <?php
-$db_servername = "localhost";
-$db_username = "root";
-$db_password = "";
-$db_name = "success";
+require_once 'database_credentials.php';
 
 // Create connection
-$conn = mysqli_connect($db_servername, $db_username, $db_password,$db_name);
+$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 // Check connection
 if(!$conn){

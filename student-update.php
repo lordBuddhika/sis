@@ -1,5 +1,7 @@
 <?php include_once 'staff-header.php';
-    $dbconn = new mysqli('localhost', 'root', '', 'itpprojectdb');
+    require_once 'database_credentials.php';
+
+    $dbconn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     if($dbconn->connect_error) {
         die("Database connection error: " . $dbconn->connect_error);
     } else {
@@ -162,4 +164,3 @@ if(isset($_POST["update"])) {
     <?php include_once 'staff-footer.php';
 }
 ?>
-

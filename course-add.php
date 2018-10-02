@@ -1,7 +1,9 @@
-<?php include_once 'staff-header.php'; ?>
+<?php include_once 'staff-header.php';
+    require_once 'database_credentials.php';
+?>
 <?php
 
-    $db =new mysqli('localhost','root','','itpprojectdb');
+    $db =new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
         if ($db->connect_errno)
             {
               die("Failed to connect to MySQL: " .  $db->connect_error);
