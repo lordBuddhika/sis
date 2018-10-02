@@ -3,7 +3,7 @@
 					<div class="row">
 						<div class="col-md-3">
 							<div class="card mb-4 p-2">
-								<img class="card-img-top p-4" src="assets/images/student-add.png" alt="image">
+								<img class="card-img-top p-4" src="assets/images/student-add.png" alt="Image">
 								<div class="card-body">
 									<a href="student-add.php" class="btn btn-lg btn-dark btn-block">Add</a>
 								</div>
